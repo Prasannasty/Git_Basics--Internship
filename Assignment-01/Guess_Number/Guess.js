@@ -7,7 +7,7 @@ do {
     guess = parseInt(prompt("Guess a number between 1 and 100:")); // here user entered the random number
     //parseInt is used to convert the string to an integer
     attempts++;
-    if (guess < secretNumber) {
+   /* if (guess < secretNumber) {
         alert("Too low! Try again."); 
     } else if (guess > secretNumber) {
         alert("Too high! Try again.");
@@ -15,5 +15,26 @@ do {
         alert("Congratulations! You guessed the number in " + attempts + " attempts.");
     } else {
         alert("Invalid input. Please enter a number.");
-    }
+    }  */
+
+
+        
+   switch(guess){
+       case secretNumber:{
+           alert("Congratulations! You guessed the number in " + attempts + " attempts.");
+           break;
+       }
+       case guess < secretNumber: {
+           alert("Too low! Try again.");
+           break;
+       }
+       case guess > secretNumber: {
+           alert("Too high! Try again.");
+           break;
+       }
+       default: {
+           alert("Invalid input. Please enter a number.");
+           break;
+       }
+   }
 } while (guess !== secretNumber); //it will continues until the user inputs correct number
