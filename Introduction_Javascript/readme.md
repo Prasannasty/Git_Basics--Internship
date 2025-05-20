@@ -69,3 +69,58 @@ Operators in JavaScript are symbols used to perform operations on values or vari
  6. String operators - The + operator can also be used to concatenate strings:
  7.ternary Operators
  
+
+
+### control flow in JS ####
+Control Flow refers to the order in which code is executed in a program.
+By default, JavaScript executes code from top to bottom, line by line.
+
+"Types of control flow in js "
+ 1. Conditional Statements
+ Used to make decisions in code.
+ if, else if, else
+ 
+switch -- Useful for checking one variable against many possible values:
+
+### Loops In JS ###
+Loops Iteration
+Used to repeat blocks of code.
+for, while ,for each, do while
+
+3. Jump Statement
+ Used to change the flow of a program.
+ break	--- Exits a loop or switch early
+continue --- Skips the current iteration
+return --- Exits a function and returns a value
+
+
+
+### Functions In JS ###
+A function is a block of code designed to perform a specific task.
+You can reuse functions by calling them, which helps avoid repetition and makes your code cleaner and more modular.
+
+ Why use functions?
+Reuse code
+Organize logic
+Improve readability
+Reduce errors by avoiding duplication
+
+1.Function declaration 
+Starts with the function keyword
+Can accept parameters
+Can return a value using return
+
+2.Function Expression
+Functions can also be assigned to variables:
+
+3.Arrow Function(ES6+)
+A shorter syntax for writing functions:
+
+4.Default Paramaters
+Provide default values for parameters:
+
+5.Rest Parameters
+Allow functions to accept any number of arguments:
+
+6. Function Scope
+Variables declared inside a function are local to that function:
