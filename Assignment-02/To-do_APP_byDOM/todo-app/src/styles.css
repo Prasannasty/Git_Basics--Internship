@@ -1,0 +1,214 @@
+body {
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+}
+
+/* Add a shadow and hover effect to each task */
+#taskList li {
+    background: #fff;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.08);
+    transition: box-shadow 0.2s, transform 0.2s;
+    padding: 10px 12px;
+}
+#taskList li:hover {
+    box-shadow: 0 4px 16px rgba(52, 152, 219, 0.18);
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Make the input and button pop */
+#taskInput:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 4px #3498db44;
+}
+#addTaskButton {
+    box-shadow: 0 2px 6px #3498db22;
+}
+#addTaskButton:active {
+    transform: scale(0.97);
+}
+
+/* Style the checkbox for a modern look */
+input[type="checkbox"] {
+    accent-color: #27ae60;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Animate completed tasks */
+.completed span {
+    text-decoration: line-through;
+    color: #888;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* Animate remove button */
+.remove-btn {
+    transition: background 0.2s, transform 0.1s;
+}
+.remove-btn:active {
+    transform: scale(0.95);
+}
+
+/* Add a floating effect to the container */
+.container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 32px 24px 24px 24px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(52,152,219,0.18);
+    position: relative;
+    overflow: hidden;
+    animation: floatIn 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes floatIn {
+    0% { transform: translateY(40px) scale(0.95); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Add a subtle animated gradient border */
+.container::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    z-index: -1;
+    border-radius: 22px;
+    background: linear-gradient(120deg, #6dd5ed, #2193b0, #f7971e, #ffd200);
+    background-size: 300% 300%;
+    animation: borderMove 6s ease infinite;
+}
+@keyframes borderMove {
+    0% { background-position: 0% 50%;}
+    50% { background-position: 100% 50%;}
+    100% { background-position: 0% 50%;}
+}
+
+/* Logo styling */
+.todo-logo {
+    display: block;
+    margin: 0 auto 18px auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 0 2px 12px rgba(52,152,219,0.15);
+    background: #fff;
+    object-fit: cover;
+    border: 3px solid #3498db33;
+    transition: transform 0.2s;
+}
+.todo-logo:hover {
+    transform: scale(1.08) rotate(-6deg);
+}
+
+/* Fancy heading */
+h1 {
+    text-align: center;
+    color: #3498db;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    font-weight: 700;
+    text-shadow: 0 2px 8px #3498db22;
+}
+
+/* Input and button styling */
+#taskInput {
+    width: 65%;
+    padding: 10px;
+    border: 1.5px solid #b2bec3;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+#taskInput:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 6px #3498db44;
+}
+#addTaskButton {
+    padding: 10px 18px;
+    margin-left: 8px;
+    background: linear-gradient(90deg, #3498db 60%, #6dd5ed 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px #3498db22;
+    transition: background 0.2s, transform 0.1s;
+}
+#addTaskButton:hover {
+    background: linear-gradient(90deg, #217dbb 60%, #6dd5ed 100%);
+    transform: scale(1.04);
+}
+#addTaskButton:active {
+    transform: scale(0.97);
+}
+
+/* Task list styling */
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin-top: 24px;
+}
+
+#taskList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.08);
+    transition: box-shadow 0.2s, transform 0.2s;
+    padding: 10px 12px;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+}
+#taskList li:hover {
+    box-shadow: 0 4px 16px rgba(52, 152, 219, 0.18);
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+    accent-color: #27ae60;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: accent-color 0.2s;
+}
+
+/* Completed task style */
+.completed span {
+    text-decoration: line-through;
+    color: #888;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* Remove button styling */
+.remove-btn {
+    background: linear-gradient(90deg, #e74c3c 60%, #ff7675 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 14px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s, transform 0.1s;
+}
+.remove-btn:hover {
+    background: linear-gradient(90deg, #c0392b 60%, #ff7675 100%);
+    transform: scale(1.05);
+}
+.remove-btn:active {
+    transform: scale(0.95);
+}

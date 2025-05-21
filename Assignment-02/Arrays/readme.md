@@ -50,7 +50,7 @@ You can loop through arrays in JavaScript using several methods to access each e
 
 1.for loop
 2.for ...of looop
-3. forEach Loop
+3. forEach Loop : returns a undefined value
 4.while Loop
 5.Map method  ( new Array , it does not the change the original Array)
 
@@ -77,3 +77,12 @@ You can loop through arrays in JavaScript using several methods to access each e
 9.map()- The map method creates a new array with the results of applying the provided function on every
 element in this array. It does not change the original array.
 10.reduce()- The reduce method applies a function against an accumulator and each element in the array
+
+
+### Obejcts ###
+. An object is a collection of key-value pairs.
+. Keys (properties) are usually strings (or Symbols), and values can be any data type
+. Objects are mutable, meaning they can be changed after creation.
+
+
+

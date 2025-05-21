@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Example</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="mainHeading">Hello, DOM</h1>
+    <p class="text">This is a paragraph</p>
+    <p class="text" id="oldPara">This is an old paragraph</p>
+
+    <button id="changeTextBtn">Change Text</button>
+    <button id="changeStyleBtn">Change Style</button>
+    <button id="addElementBtn">Add New Paragraph</button>
+    <button id="removeElementBtn">Remove Paragraph</button>
+
+    <script>
+        // Accessing elements
+        let heading = document.getElementById("mainHeading");
+        let firstPara = document.querySelector(".text");
+        let allPara = document.querySelectorAll(".text");
+        let byClass = document.getElementsByClassName("text");
+        let byTag = document.getElementsByTagName("p");
+
+        // Changing content 
+        document.getElementById("changeTextBtn").addEventListener("click", () => {
+            heading.textContent = "DOM Manipulated!";
+            firstPara.innerHTML = "<em>Paragraph content changed!</em>";
+        });
+
+        // Changing Style
+        document.getElementById("changeStyleBtn").addEventListener("click", () => {
+            heading.style.color = "blue";
+            heading.style.fontSize = "30px";
+            heading.classList.toggle("highlight");
+        });
+
+        // Adding New Element
+        document.getElementById("addElementBtn").addEventListener("click", () => {
+            const newPara = document.createElement("p");
+            newPara.textContent = "This is a newly added paragraph.";
+            document.body.appendChild(newPara);
+        });
+
+        // Removing Elements
+        document.getElementById("removeElementBtn").addEventListener("click", () => {
+            const oldPara = document.getElementById("oldPara");
+            if (oldPara) {
+                oldPara.remove();
+            }
+        });
+
+        // Say hello function (for event listener example)
+        function sayHello() {
+            alert("Button Clicked!");
+        }
+
+        // Event listener with removal after first click
+        document.getElementById("changeTextBtn").addEventListener("click", sayHello);
+        document.getElementById("changeTextBtn").addEventListener("click", () => {
+            document.getElementById("changeTextBtn").removeEventListener("click", sayHello);
+        });
+    </script>
+</body>
+</html>

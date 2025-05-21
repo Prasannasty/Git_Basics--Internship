@@ -128,3 +128,4 @@ let sum=arr15.reduce(function(accumulator, currentValue) {
 console.log(sum); // 15
 
 
+
