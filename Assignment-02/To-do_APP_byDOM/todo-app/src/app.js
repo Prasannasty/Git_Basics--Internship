@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         li.appendChild(removeBtn);
         taskList.appendChild(li);
 
-        alert("Task added successfully!"); // Show popup message
+        
 
         taskInput.value = '';
     });

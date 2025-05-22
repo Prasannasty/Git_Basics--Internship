@@ -87,7 +87,7 @@ console.log(arr4); // [0, 1, 2, 3]
 
 //5. splice() - changes the contents of an array by removing or replacing existing elements and/or adding new elements in place
 let arr5=[1, 2, 3, 4, 5];
-arr5.splice(2, 2, 6, 7);
+arr5.splice(2, 2, 6, 7,8);
 console.log(arr5); // [1, 2, 6, 7, 5]
 
 //6. slice() - returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) where start and end represent the index of items in that array
@@ -126,6 +126,13 @@ let sum=arr15.reduce(function(accumulator, currentValue) {
     return accumulator + currentValue;
 }, 0);
 console.log(sum); // 15
+
+
+
+
+
+
+
 
 
 
