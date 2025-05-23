@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="details_Form.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- LEFT SIDE -->
+    <div class="left-side">
+      <div class="top-image"></div>
+      <div class="bottom-content">
+        <h2>Welcome Student</h2>
+        <p>Track your academic progress with ease.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: FORM -->
+    <div class="form-container">
+      <form id="studentForm">
+        <h2>Student Dashboard</h2>
+        
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" name="studentName" required>
+
+        <label for="rollNumber">Registration Number:</label>
+        <input type="text" id="rollNumber" name="rollNumber" required>
+
+        <label for="deptName">Department Name:</label>
+        <input type="text" id="deptName" name="deptName" required>
+
+        <label for="semester">Semester:</label>
+        <input type="number" id="semester" name="semester" required min="1" max="8" step="1">
+
+        <fieldset>
+          <legend>Subjects and Marks</legend>
+
+          <!-- Subject 1 -->
+          <div class="subject-row">
+            <label for="subject1">Subject 1 :</label>
+            <input type="text" id="subject1" name="subject1" required pattern="[A-Za-z ]+">
+            <label for="marks1">Marks:</label>
+            <input type="number" id="marks1" name="marks1" class="marks" min="0" max="100" required>
+          </div>
+          <!-- Subject 2 -->
+          <div class="subject-row">
+            <label for="subject2">Subject 2 :</label>
+            <input type="text" id="subject2" name="subject2" required pattern="[A-Za-z ]+">
+            <label for="marks2">Marks:</label>
+            <input type="number" id="marks2" name="marks2" class="marks" min="0" max="100" required>
+          </div>
+          <!-- Subject 3 -->
+          <div class="subject-row">
+            <label for="subject3">Subject 3 :</label>
+            <input type="text" id="subject3" name="subject3" required pattern="[A-Za-z ]+">
+            <label for="marks3">Marks:</label>
+            <input type="number" id="marks3" name="marks3" class="marks" min="0" max="100" required>
+          </div>
+          <!-- Subject 4 -->
+          <div class="subject-row">
+            <label for="subject4">Subject 4 :</label>
+            <input type="text" id="subject4" name="subject4" required pattern="[A-Za-z ]+">
+            <label for="marks4">Marks:</label>
+            <input type="number" id="marks4" name="marks4" class="marks" min="0" max="100" required>
+          </div>
+          <!-- Subject 5 -->
+          <div class="subject-row">
+            <label for="subject5">Subject 5 :</label>
+            <input type="text" id="subject5" name="subject5" required pattern="[A-Za-z ]+">
+            <label for="marks5">Marks:</label>
+            <input type="number" id="marks5" name="marks5" class="marks" min="0" max="100" required>
+          </div>
+          <!-- Subject 6 -->
+          <div class="subject-row">
+            <label for="subject6">Subject 6 :</label>
+            <input type="text" id="subject6" name="subject6" required pattern="[A-Za-z ]+">
+            <label for="marks6">Marks:</label>
+            <input type="number" id="marks6" name="marks6" class="marks" min="0" max="100" required>
+          </div>
+        </fieldset>
+
+        <label for="totalMarks">Total Marks:</label>
+        <input type="number" id="totalMarks" name="totalMarks" readonly>
+
+        <label for="percentage">Percentage:</label>
+        <input type="text" id="percentage" name="percentage" readonly>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <script src="details.Form.js"></script>
+</body>
+</html>

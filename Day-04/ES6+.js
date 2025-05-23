@@ -192,3 +192,6 @@ const promise = new Promise((resolve, reject) => {
 promise
   .then(result => console.log(result)) // Runs if resolved
   .catch(error => console.log(error)); // Runs if rejected
+
+
+  const greet=()=>console.log("Hello world");

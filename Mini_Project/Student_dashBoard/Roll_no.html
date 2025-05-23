@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Search</title>
+  <link rel="stylesheet" href="Roll_no.css" />
+  <!-- Font Awesome CDN for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Popup Message -->
+  <div id="popup" class="popup"></div>
+
+  <div class="center-container">
+    <!-- Heading with icon -->
+    <h1 class="main-heading">
+      <i class="fas fa-user-graduate"></i>
+      Student Result Search
+    </h1>
+
+    <form id="searchForm" class="search-form">
+      <label for="deptName">Department</label>
+      <input type="text" id="deptName" required />
+
+      <label for="semester">Semester</label>
+      <input type="text" id="semester" required />
+
+      <label for="rollNumber">Roll Number</label>
+      <input type="text" id="rollNumber" required />
+
+      <button type="submit">Search</button>
+    </form>
+
+    <button id="backHome" class="back-btn">Back to Home</button>
+
+    <div id="result" class="table-wrapper"></div>
+  </div>
+
+  <script src="Roll_no.js"></script>
+</body>
+</html>

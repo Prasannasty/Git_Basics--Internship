@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Home.css">
+</head>
+<body>
+    <header>    
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Student Logo" class="logo">
+        <h1>Student Dashboard</h1>
+        <p>Manage student records and marks efficiently in one place.</p>
+    </header>
+    <main>
+        <div class="button-group">
+            <button onclick="localStorage.removeItem('editRollNumber'); location.href='details_Form.html'">Add Student Details</button>
+            <button onclick="location.href='Roll_no.html'">See Marks by Roll Number</button>
+            <button onclick="location.href='All_Student.html'">View All Students</button>
+        </div>
+        <div class="contact">
+            <a href="mailto:prasanna03072003@gmail.com">Contact / Help</a>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025  Navadhiti
+    </footer>
+</body>
+</html>
+

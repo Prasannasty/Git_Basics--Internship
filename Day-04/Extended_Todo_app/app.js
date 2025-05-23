@@ -1,57 +1,77 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const taskInput = document.getElementById("taskInput");
     const addTaskButton = document.getElementById("addTaskButton");
     const taskList = document.getElementById("taskList");
 
-    addTaskButton.addEventListener("click", function () {
+    function showNotification(message, color = "#2563eb") {
+        const notification = document.getElementById("notification");
+        notification.textContent = message;
+        notification.style.background = color;
+        notification.style.display = "block";
+        setTimeout(() => {
+            notification.style.display = "none";
+        }, 1800);
+    }
+
+    function updateSerialNumbers() {
+        Array.from(taskList.children).forEach((item, idx) => {
+            const serialSpan = item.querySelector('.serial-number');
+            if (serialSpan) serialSpan.textContent = `${idx + 1}.`;
+        });
+    }
+
+    addTaskButton.addEventListener("click", () => {
         const taskText = taskInput.value.trim();
-        if (taskText === '') return;
+        if (!taskText) return;
 
         const li = document.createElement("li");
 
-        // Create checkbox
+        // Serial number
+        const serial = document.createElement("span");
+        serial.className = "serial-number";
+        serial.textContent = `${taskList.children.length + 1}.`;
+        li.appendChild(serial);
+
+        // Checkbox
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.addEventListener("change", function () {
+        checkbox.addEventListener("change", () => {
             li.classList.toggle("completed");
+            if (checkbox.checked) {
+                showNotification("Task marked as completed!", "#22c55e");
+            }
         });
 
         // Task text
-        const span = document.createElement("span");
-        span.textContent = taskText;
-        span.style.marginLeft = "8px";
-        span.style.marginRight = "8px";
+        const taskSpan = document.createElement("span");
+        taskSpan.textContent = taskText;
 
-        ///edit button
-        //extra add prompt and at the prompt we have to pass the value ..then it can be changed 
-        const edit=document.createElement("button");
-        edit.textContent="Edit";
-        edit.className="edit-btn";
-        edit.addEventListener("click",function(){
-               const newtask=prompt("Edit your task",span.textContent);
-               //check if the newtask is not null and not empty
-               if(newtask!==null && newtask.trim()!==""){
-                span.textContent=newtask.trim();
-               }
+        // Edit button
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.className = "edit-btn";
+        editBtn.addEventListener("click", () => {
+            const newTask = prompt("Edit your task", taskSpan.textContent);
+            if (newTask && newTask.trim() !== "") {
+                taskSpan.textContent = newTask.trim();
+            }
         });
 
-
         // Remove button
-
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "Remove";
         removeBtn.className = "remove-btn";
-        removeBtn.addEventListener("click", function () {
+        removeBtn.addEventListener("click", () => {
             taskList.removeChild(li);
+            showNotification("Task removed!", "#ef4444");
+            updateSerialNumbers();
         });
 
         li.appendChild(checkbox);
-        li.appendChild(span);
-        li.appendChild(edit);
+        li.appendChild(taskSpan);
+        li.appendChild(editBtn);
         li.appendChild(removeBtn);
         taskList.appendChild(li);
-
-        
 
         taskInput.value = '';
     });
