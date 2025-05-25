@@ -12,7 +12,7 @@ function renderTable() {
                 <th>Name</th>
                 <th>Department</th>
                 <th>Semester</th>
-                <th>See</th>
+                <th>View</th>
             </tr>
         </thead>
     `;

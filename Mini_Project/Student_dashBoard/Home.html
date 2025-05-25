@@ -1,31 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Home.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard Home</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #e9ecef 60%, #d0e6fa 100%);
+      color: #343a40;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      padding: 20px 40px 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      height: 60px;
+      margin-bottom: 0;
+      border-radius: 12px;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .header-title {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-right: 20px;
+    }
+
+    .header-marquee {
+      width: 100%;
+      margin-top: 10px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 1.1rem;
+      background: rgba(0,0,0,0.08);
+      border-radius: 6px;
+      padding: 4px 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .profile {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      z-index: 20;
+    }
+
+    .profile img {
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      background: #fff;
+    }
+
+    .profile-dropdown {
+      position: absolute;
+      top: 54px;
+      right: 0;
+      background-color: #fff;
+      border: 1px solid #007bff;
+      padding: 18px 20px 12px 20px;
+      border-radius: 10px;
+      display: none;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+      min-width: 170px;
+      text-align: center;
+    }
+
+    .profile.active .profile-dropdown {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    #userDisplay {
+      display: inline-block;
+      background: #007bff;
+      color: #fff;
+      padding: 7px 18px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      letter-spacing: 0.5px;
+    }
+
+    .profile-dropdown a {
+      color: #007bff;
+      text-decoration: none;
+      display: block;
+      padding: 7px 0 0 0;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .profile-dropdown a:hover {
+      background: #f0f8ff;
+      text-decoration: underline;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 120px);
+      padding-bottom: 60px;
+    }
+
+    .main-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0, 123, 255, 0.08);
+      padding: 36px 32px 32px 32px;
+      margin: 10px;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(0, 123, 255, 0.13);
+    }
+
+    .card h2 {
+      font-size: 1.7rem;
+      color: #007bff;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .card p {
+      color: #555;
+      margin-bottom: 30px;
+      font-size: 1.08rem;
+    }
+
+    .button-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    .action-btn {
+      padding: 13px 38px;
+      font-size: 1.08rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #107cef 70%, #0056b3 100%);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .action-btn:hover {
+      background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 4px 16px rgba(0,123,255,0.13);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #ddd;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <header>    
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Student Logo" class="logo">
-        <h1>Student Dashboard</h1>
-        <p>Manage student records and marks efficiently in one place.</p>
-    </header>
-    <main>
-        <div class="button-group">
-            <button onclick="localStorage.removeItem('editRollNumber'); location.href='details_Form.html'">Add Student Details</button>
-            <button onclick="location.href='Roll_no.html'">See Marks by Roll Number</button>
-            <button onclick="location.href='All_Student.html'">View All Students</button>
+
+  <header>
+    <div class="header-left">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" class="logo" alt="Student Logo">
+      <span class="header-title">Student Dashboard</span>
+    </div>
+    <div class="profile" onclick="toggleProfile()">
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Icon">
+      <div class="profile-dropdown" id="profileDropdown">
+        <span id="userDisplay" style="background:none;color:#007bff;font-weight:600;font-size:1.08rem;padding:0;">Guest</span>
+        <a href="#" onclick="logout()">Logout</a>
+      </div>
+    </div>
+    <div class="header-marquee">
+      <marquee behavior="scroll" direction="left" scrollamount="6">
+        Welcome to the Student Dashboard! Manage your student data efficiently and securely.
+      </marquee>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="main-content">
+      <div class="card">
+        <h2>Welcome to the Student Dashboard</h2>
+        <p>This is your central place to manage student data.</p>
+        <div class="button-col">
+          <button class="action-btn" onclick="window.location.href='details_Form.html'">Add Details</button>
+          <button class="action-btn" onclick="window.location.href='Roll_no.html'">View By Roll_No</button>
+          <button class="action-btn" onclick="window.location.href='All_Students.html'">All Students Details</button>
         </div>
-        <div class="contact">
-            <a href="mailto:prasanna03072003@gmail.com">Contact / Help</a>
-        </div>
-    </main>
-    <footer>
-        &copy; 2025  Navadhiti
-    </footer>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Contact: <a href="mailto:prasanna03072003@gmail.com">prasanna03072003@gmail.com</a> |
+      <span id="footerDate"></span>
+    </p>
+  </footer>
+
+  <script>
+    const user = localStorage.getItem("currentUser");
+    document.getElementById("userDisplay").textContent = user || "Guest";
+    if (!user) {
+      window.location.href = "login.html"; // Redirect to login if not logged in
+    }
+
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html"; // Redirect to login on logout
+    }
+
+    function toggleProfile() {
+      const profileDiv = document.querySelector(".profile");
+      profileDiv.classList.toggle("active");
+    }
+
+    // Optional: Close profile dropdown when clicking outside
+    document.addEventListener("click", function (e) {
+      const profile = document.querySelector(".profile");
+      if (!profile.contains(e.target)) {
+        profile.classList.remove("active");
+      }
+    });
+
+    const today = new Date();
+    document.getElementById('footerDate').textContent =
+      `${today.toLocaleDateString()} © ${today.getFullYear()}`;
+  </script>
+
 </body>
 </html>
-

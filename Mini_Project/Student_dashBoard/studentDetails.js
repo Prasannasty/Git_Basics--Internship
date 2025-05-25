@@ -47,5 +47,5 @@ window.deleteStudent = function(rollNumber) {
 };
 
 document.getElementById('backBtn').onclick = function() {
-    window.location.href = "All_Student.html";
+    window.location.href = "All_Students.html";
 };

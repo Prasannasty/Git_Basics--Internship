@@ -1,13 +1,14 @@
 document.getElementById('studentForm').addEventListener('submit', function(e) {
-    // Only show confirmation if editing
     const editRoll = localStorage.getItem('editRollNumber');
     if (editRoll) {
-        if (!confirm("Are you sure you want to save these changes?")) {
-            e.preventDefault();
-            return false;
-        }
+        e.preventDefault();
+        showEditModal(function(confirmed) {
+            if (confirmed) {
+                saveStudentForm();
+            }
+        });
+        return false;
     }
-
     // Semester: only numbers between 1 and 8
     const semester = document.getElementById('semester').value;
     if (!/^\d+$/.test(semester) || semester < 1 || semester > 8) {
@@ -34,71 +35,8 @@ document.getElementById('studentForm').addEventListener('submit', function(e) {
     }
 
     e.preventDefault();
-
-    const form = e.target;
-    const student = {
-        studentName: form.studentName.value,
-        rollNumber: form.rollNumber.value,
-        deptName: form.deptName.value,
-        semester: form.semester.value,
-        totalMarks: form.totalMarks.value,
-        percentage: form.percentage.value
-    };
-    for (let i = 1; i <= 6; i++) {
-        student['subject' + i] = form['subject' + i].value;
-        student['marks' + i] = form['marks' + i].value;
-    }
-
-    let students = JSON.parse(localStorage.getItem('students') || '[]');
-    // Check if editing
-    if (editRoll) {
-        const idx = students.findIndex(s => s.rollNumber == editRoll);
-        if (idx !== -1) {
-            students[idx] = student;
-            localStorage.setItem('students', JSON.stringify(students));
-            localStorage.removeItem('editRollNumber');
-            showTopMessage("Your data has been changed!");
-            setTimeout(() => {
-                window.location.href = "Home.html";
-            }, 1000);
-            return;
-        }
-    }
-    // New student
-    students.push(student);
-    localStorage.setItem('students', JSON.stringify(students));
-    showTopMessage("Student details saved!");
-    setTimeout(() => {
-        window.location.href = "Home.html";
-    }, 600);
-    form.reset();
+    saveStudentForm();
 });
-
-// Show message at top of screen
-function showTopMessage(msg) {
-    let msgDiv = document.getElementById('msg');
-    if (!msgDiv) {
-        msgDiv = document.createElement('div');
-        msgDiv.id = 'msg';
-        msgDiv.style.position = 'fixed';
-        msgDiv.style.top = '30px';
-        msgDiv.style.left = '50%';
-        msgDiv.style.transform = 'translateX(-50%)';
-        msgDiv.style.background = '#d1fae5';
-        msgDiv.style.color = '#065f46';
-        msgDiv.style.padding = '16px 32px';
-        msgDiv.style.borderRadius = '8px';
-        msgDiv.style.fontWeight = 'bold';
-        msgDiv.style.boxShadow = '0 2px 8px rgba(0,0,0,0.12)';
-        msgDiv.style.zIndex = '9999';
-        document.body.appendChild(msgDiv);
-    }
-    msgDiv.innerText = msg;
-    msgDiv.style.display = "block";
-    setTimeout(() => {
-        msgDiv.style.display = "none";
-    }, 900);
-}
 
 // Autofill form if editing
 window.onload = function() {
@@ -159,4 +97,71 @@ function deleteStudent(rollNumber) {
     localStorage.setItem('students', JSON.stringify(students));
     localStorage.setItem('deleteMsg', 'Student has been deleted!');
     window.location.href = "All_Student.html";
+}
+
+// Show the modal and handle callback
+function showEditModal(callback) {
+    const modal = document.getElementById('editConfirmModal');
+    modal.style.display = 'flex';
+    const submitBtn = document.getElementById('modalSubmitBtn');
+    // Remove previous listeners
+    submitBtn.onclick = null;
+    submitBtn.onclick = function() {
+        closeEditModal();
+        callback(true);
+    };
+}
+
+function closeEditModal() {
+    document.getElementById('editConfirmModal').style.display = 'none';
+}
+
+// Show green popup at top
+function showTopMessage(msg, callback) {
+    let msgDiv = document.getElementById('msg');
+    msgDiv.innerText = msg;
+    msgDiv.style.display = "block";
+    setTimeout(() => {
+        msgDiv.style.display = "none";
+        if (callback) callback();
+    }, 900);
+}
+
+// In your saveStudentForm, after saving:
+function saveStudentForm() {
+    const form = document.getElementById('studentForm');
+    const student = {
+        studentName: form.studentName.value,
+        rollNumber: form.rollNumber.value,
+        deptName: form.deptName.value,
+        semester: form.semester.value,
+        totalMarks: form.totalMarks.value,
+        percentage: form.percentage.value
+    };
+    for (let i = 1; i <= 6; i++) {
+        student['subject' + i] = form['subject' + i].value;
+        student['marks' + i] = form['marks' + i].value;
+    }
+
+    let students = JSON.parse(localStorage.getItem('students') || '[]');
+    const editRoll = localStorage.getItem('editRollNumber');
+    if (editRoll) {
+        const idx = students.findIndex(s => s.rollNumber == editRoll);
+        if (idx !== -1) {
+            students[idx] = student;
+            localStorage.setItem('students', JSON.stringify(students));
+            localStorage.removeItem('editRollNumber');
+            showTopMessage("Data has been changed!", () => {
+                window.location.href = "Home.html";
+            });
+            return;
+        }
+    }
+    // New student
+    students.push(student);
+    localStorage.setItem('students', JSON.stringify(students));
+    showTopMessage("Student details saved!", () => {
+        window.location.href = "Home.html";
+    });
+    form.reset();
 }

@@ -8,19 +8,28 @@
 </head>
 <body>
   <div class="container">
-    <!-- LEFT SIDE -->
+    
     <div class="left-side">
-      <div class="top-image"></div>
+      <div class="top-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Student Icon" class="simple-img">
+      </div>
       <div class="bottom-content">
         <h2>Welcome Student</h2>
-        <p>Track your academic progress with ease.</p>
+        <p>
+          Fill in your academic details below.<br>
+          You can track your progress and keep your records up to date!
+        </p>
+        <ul style="margin-top:18px; color:#007bff; font-size:1rem; padding-left:18px;">
+          <li>Enter your name, registration number, and department.</li>
+          <li>Fill in your semester and subject marks.</li>
+          <li>Your total and percentage will be calculated automatically.</li>
+        </ul>
       </div>
     </div>
 
-    <!-- RIGHT SIDE: FORM -->
     <div class="form-container">
-      <form id="studentForm">
-        <h2>Student Dashboard</h2>
+      <form id="studentForm" autocomplete="off">
+        <h2>Student Details Form</h2>
         
         <label for="studentName">Student Name:</label>
         <input type="text" id="studentName" name="studentName" required>
@@ -36,43 +45,36 @@
 
         <fieldset>
           <legend>Subjects and Marks</legend>
-
-          <!-- Subject 1 -->
           <div class="subject-row">
             <label for="subject1">Subject 1 :</label>
             <input type="text" id="subject1" name="subject1" required pattern="[A-Za-z ]+">
             <label for="marks1">Marks:</label>
             <input type="number" id="marks1" name="marks1" class="marks" min="0" max="100" required>
           </div>
-          <!-- Subject 2 -->
           <div class="subject-row">
             <label for="subject2">Subject 2 :</label>
             <input type="text" id="subject2" name="subject2" required pattern="[A-Za-z ]+">
             <label for="marks2">Marks:</label>
             <input type="number" id="marks2" name="marks2" class="marks" min="0" max="100" required>
           </div>
-          <!-- Subject 3 -->
           <div class="subject-row">
             <label for="subject3">Subject 3 :</label>
             <input type="text" id="subject3" name="subject3" required pattern="[A-Za-z ]+">
             <label for="marks3">Marks:</label>
             <input type="number" id="marks3" name="marks3" class="marks" min="0" max="100" required>
           </div>
-          <!-- Subject 4 -->
           <div class="subject-row">
             <label for="subject4">Subject 4 :</label>
             <input type="text" id="subject4" name="subject4" required pattern="[A-Za-z ]+">
             <label for="marks4">Marks:</label>
             <input type="number" id="marks4" name="marks4" class="marks" min="0" max="100" required>
           </div>
-          <!-- Subject 5 -->
           <div class="subject-row">
             <label for="subject5">Subject 5 :</label>
             <input type="text" id="subject5" name="subject5" required pattern="[A-Za-z ]+">
             <label for="marks5">Marks:</label>
             <input type="number" id="marks5" name="marks5" class="marks" min="0" max="100" required>
           </div>
-          <!-- Subject 6 -->
           <div class="subject-row">
             <label for="subject6">Subject 6 :</label>
             <input type="text" id="subject6" name="subject6" required pattern="[A-Za-z ]+">
@@ -92,5 +94,23 @@
     </div>
   </div>
   <script src="details.Form.js"></script>
+
+  <!-- Confirmation Modal -->
+<div id="editConfirmModal" class="modal-overlay" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title">Please confirm</span>
+      <span class="modal-close" onclick="closeEditModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      Are you sure you want to save these changes?
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn close" onclick="closeEditModal()">CLOSE</button>
+      <button class="modal-btn submit" id="modalSubmitBtn">SUBMIT</button>
+    </div>
+  </div>
+</div>
+<div id="msg" style="display:none;position:fixed;top:30px;left:50%;transform:translateX(-50%);background:#27ae60;color:#fff;padding:16px 32px;border-radius:8px;font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,0.12);z-index:99999;"></div>
 </body>
 </html>

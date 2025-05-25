@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Dashboard Login</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      background: #f7f8fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(102, 126, 234, 0.25);
+      padding: 50px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .form-title {
+      font-weight: 700;
+      font-size: 2.4rem;
+      color: #32325d;
+      text-align: center;
+      user-select: none;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #555770;
+      user-select: none;
+    }
+
+    input {
+      padding: 14px 18px;
+      font-size: 1rem;
+      border: 2px solid #ebebf0;
+      border-radius: 12px;
+      background: #fafafa;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      color: #252733;
+    }
+
+    input::placeholder {
+      color: #bfbfcf;
+      font-weight: 400;
+    }
+
+    input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+      outline: none;
+      background: white;
+    }
+
+    button {
+      padding: 14px;
+      background: #667eea;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+      transition: background 0.3s, transform 0.2s;
+      user-select: none;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #5563d6;
+      transform: translateY(-3px);
+    }
+
+    .switch-btn {
+      background: none;
+      border: none;
+      color: #667eea;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+      margin-top: 10px;
+      transition: color 0.3s;
+      width: 100%;
+    }
+
+    .switch-btn:hover {
+      color: #4554b5;
+    }
+
+    #message {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #eb5757;
+      text-align: center;
+      min-height: 24px;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .container {
+        padding: 36px 24px;
+        max-width: 100%;
+        border-radius: 18px;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+      }
+      .form-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main" aria-label="Student Login page">
+    <h2 class="form-title" id="formTitle">Login</h2>
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter your username" autocomplete="username" />
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" />
+    </div>
+    <div class="input-group" id="confirmGroup" style="display:none;">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" placeholder="Confirm your password" autocomplete="new-password" />
+    </div>
+    <button id="submitBtn" type="button" onclick="handleAuth()">Submit</button>
+    <div id="message" aria-live="assertive"></div>
+    <button class="switch-btn" onclick="toggleForm()" aria-expanded="false" aria-controls="formTitle" id="switchBtn">Switch to Sign Up</button>
+  </main>
+
+  <script>
+    let isLogin = true;
+
+    const formTitle = document.getElementById('formTitle');
+    const confirmGroup = document.getElementById('confirmGroup');
+    const switchBtn = document.getElementById('switchBtn');
+    const messageEl = document.getElementById('message');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+
+    function toggleForm() {
+      isLogin = !isLogin;
+      formTitle.textContent = isLogin ? 'Login' : 'Sign Up';
+      confirmGroup.style.display = isLogin ? 'none' : 'block';
+      switchBtn.textContent = isLogin ? 'Switch to Sign Up' : 'Switch to Login';
+      switchBtn.setAttribute('aria-expanded', (!isLogin).toString());
+
+      messageEl.textContent = '';
+      messageEl.style.color = '#eb5757';
+
+      usernameInput.value = '';
+      passwordInput.value = '';
+      confirmPasswordInput.value = '';
+      usernameInput.focus();
+    }
+
+    function showMessage(msg, color = '#eb5757') {
+      messageEl.textContent = msg;
+      messageEl.style.color = color;
+    }
+
+    function handleAuth() {
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value.trim();
+      const confirmPassword = confirmPasswordInput.value.trim();
+
+      if (!username || !password || (!isLogin && !confirmPassword)) {
+        showMessage('Please fill in all fields.');
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem('users') || '[]');
+
+      if (isLogin) {
+        const user = users.find(u => u.username === username && u.password === password);
+        if (user) {
+          localStorage.setItem('currentUser', username);
+          showMessage('Login successful!', '#22c55e');
+          setTimeout(() => {
+            window.location.href = 'Home.html';
+          }, 1200);
+        } else {
+          showMessage('Invalid username or password.');
+        }
+      } else {
+        if (password !== confirmPassword) {
+          showMessage('Passwords do not match.');
+          return;
+        }
+        if (users.find(u => u.username === username)) {
+          showMessage('Username already exists.');
+          return;
+        }
+        users.push({ username, password });
+        localStorage.setItem('users', JSON.stringify(users));
+        showMessage('Sign Up successful! Please login.', '#22c55e');
+        setTimeout(() => {
+          toggleForm();
+        }, 1200);
+      }
+    }
+  </script>
+</body>
+</html>
+
