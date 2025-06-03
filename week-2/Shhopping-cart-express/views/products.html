@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product List</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="product-title">Product List</h1>
+      <a href="/form.html" class="add-product-btn">+ Add Product</a>
+    </div>
+    <hr class="form-divider">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="productTableBody">
+        <tr>
+          <td>Product Name</td>
+          <td>100</td>
+          <td>5</td>
+          <td>Some description</td>
+          <td class="actions">
+            <button class="edit" onclick="editProduct('...')">Edit</button>
+            <button class="delete" onclick="deleteProduct('...')">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button id="prevBtn">Prev</button>
+      <span id="pageInfo"></span>
+      <button id="nextBtn">Next</button>
+    </div>
+  </div>
+
+  <div id="confirm-toast" class="toast" style="display:none;">
+    <span id="confirm-message"></span>
+    <div style="margin-top:12px; display:flex; justify-content:center; gap:16px;">
+      <button id="toast-yes" style="background:#27ae60; color:#fff; border:none; padding:6px 18px; border-radius:5px; font-weight:bold; cursor:pointer;">Yes</button>
+      <button id="toast-no" style="background:#e74c3c; color:#fff; border:none; padding:6px 18px; border-radius:5px; font-weight:bold; cursor:pointer;">No</button>
+    </div>
+  </div>
+
+  <script src="/products.js"></script>
+</body>
+</html>

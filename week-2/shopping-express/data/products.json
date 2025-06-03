@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1748521267191",
+    "name": "iphone",
+    "description": "macos",
+    "price": 123212,
+    "quantity": 11,
+    "date": "2025-05-14"
+  },
+  {
+    "id": "1748521434784",
+    "name": "vivo",
+    "description": "super",
+    "price": 12222222,
+    "quantity": 1,
+    "date": "2025-05-14"
+  },
+  {
+    "id": "1748521457753",
+    "name": "oppo",
+    "description": "good",
+    "price": 22222,
+    "quantity": 1,
+    "date": "2025-05-21"
+  }
+]
