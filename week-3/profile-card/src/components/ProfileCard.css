@@ -1,0 +1,127 @@
+/* Background for the entire page */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+  min-height: 100vh;
+}
+
+.page-header {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 30px;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+
+/* Container for all profile cards */
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Individual profile card with glass effect */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  width: 18%;
+  min-width: 220px;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 10px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.profile-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Image area */
+.profile-image-area {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile-image-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content area */
+.profile-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.profile-content h2 {
+  margin: 10px 0 5px;
+  font-size: 20px;
+  color: #333;
+}
+
+.profile-content p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Button section */
+.profile-actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 0 15px 0;
+  justify-content: center;
+}
+
+.profile-button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.profile-button:hover {
+  background-color: #1565c0;
+}
+
+/* Responsive layout tweaks */
+@media (max-width: 1200px) {
+  .profile-card {
+    width: 30%;
+  }
+}
+
+@media (max-width: 800px) {
+  .profile-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 500px) {
+  .profile-card {
+    width: 90%;
+  }
+}
