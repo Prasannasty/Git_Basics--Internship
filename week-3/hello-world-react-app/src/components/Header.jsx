@@ -10,11 +10,15 @@ const Header = () => {
     boxSizing: 'border-box',
   };
 
-  return (
-    <header style={headerStyle}>
-      <h1>Prasanna Shetty</h1>
-    </header>
-  );
+  function Greet() {
+    return (
+      <header style={headerStyle}>
+        <h1>Prasanna Shetty</h1>
+      </header>
+    );
+  }
+
+  return <Greet />;
 };
 
 export default Header;
