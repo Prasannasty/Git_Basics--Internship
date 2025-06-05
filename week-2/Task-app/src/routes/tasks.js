@@ -14,7 +14,6 @@ router.post('/tasks', async (req, res) => {
   }
 });
 
-// Get all tasks
 router.get('/tasks', async (req, res) => {
   try {
     const snapshot = await db.collection('tasks').get();
@@ -26,7 +25,7 @@ router.get('/tasks', async (req, res) => {
   }
 });
 
-// Update a task
+
 router.put('/tasks/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -36,8 +35,6 @@ router.put('/tasks/:id', async (req, res) => {
     res.status(500).send(error);
   }
 });
-
-// Delete a task
 router.delete('/tasks/:id', async (req, res) => {
   try {
     const { id } = req.params;

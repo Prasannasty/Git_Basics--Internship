@@ -117,12 +117,10 @@ td.actions {
 .actions .edit:hover {
   background-color: #ffd54f;
 }
-
 .actions .delete {
-  background-color: #c81f1f; /* light red */
-  color: #fff;
+    background-color: #ffb3b3;
+    color: #000000;
 }
-
 .actions .delete:hover {
   background-color: #9c2b2b;
 }
@@ -276,10 +274,6 @@ button:disabled {
   background-color: #ffd54f;
 }
 
-.actions .delete {
-  background-color: #ffb3b3; /* light red */
-  color: #fff;
-}
 
 .actions .delete:hover {
   background-color: #a13030;

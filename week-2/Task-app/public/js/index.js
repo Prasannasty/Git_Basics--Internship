@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskForm = document.getElementById('taskForm');
     const tasksTableBody = document.querySelector('#tasksTable tbody');
 
-    // Show modal on Add Task button click
     addTaskBtn.addEventListener('click', () => {
         document.getElementById('modalTitle').textContent = 'Add Task';
         taskForm.reset();
@@ -17,12 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
         taskModal.style.display = 'block';
     });
 
-    // Close modal
     closeModal.addEventListener('click', () => {
         taskModal.style.display = 'none';
     });
 
-    // Submit form (Add Task)
     taskForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const title = document.getElementById('title').value;
@@ -31,14 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const id = document.getElementById('taskId').value;
 
         if (id) {
-            // Edit existing task
             await fetch(`/api/tasks/tasks/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title, description, status })
             });
         } else {
-            // Add new task
             await fetch('/api/tasks/tasks', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -48,12 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         taskModal.style.display = 'none';
         loadTasks();
-        // Reset button for next use
         document.getElementById('saveTaskBtn').textContent = 'Save';
         document.getElementById('saveTaskBtn').disabled = false;
     });
 
-    // Load tasks and display in table
     async function loadTasks() {
         const res = await fetch('/api/tasks/tasks');
         if (!res.ok) {
@@ -91,23 +84,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tasksTableBody.addEventListener('click', async (e) => {
         if (e.target.classList.contains('edit-btn')) {
-            // Store task data for editing
             pendingEditTask = {
                 id: e.target.dataset.id,
                 title: e.target.dataset.title,
                 description: e.target.dataset.description
             };
-            // Show edit confirmation toast
             document.getElementById('editToast').style.display = 'block';
         }
         if (e.target.classList.contains('delete-btn')) {
-            // Show delete confirmation modal
             document.getElementById('deleteModal').style.display = 'block';
             document.getElementById('confirmDeleteBtn').dataset.id = e.target.dataset.id;
         }
     });
 
-    // Handle edit confirmation
     document.getElementById('confirmEditBtn').addEventListener('click', () => {
         if (pendingEditTask) {
             document.getElementById('modalTitle').textContent = 'Edit Task';
@@ -117,10 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('status').value = pendingEditTask.status || 'Pending';
             document.getElementById('saveTaskBtn').textContent = 'Update';
             document.getElementById('taskModal').style.display = 'block';
-            // Store original values for change detection
             originalTitle = pendingEditTask.title;
             originalDescription = pendingEditTask.description;
-            // Disable update button initially
             document.getElementById('saveTaskBtn').disabled = true;
             pendingEditTask = null;
         }
@@ -131,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('editToast').style.display = 'none';
     });
 
-    // Enable Update button only if data is changed
     document.getElementById('title').addEventListener('input', checkIfChanged);
     document.getElementById('description').addEventListener('input', checkIfChanged);
 
@@ -142,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('saveTaskBtn').disabled = !isChanged;
     }
 
-    // Handle delete confirmation
     document.getElementById('confirmDeleteBtn').addEventListener('click', async (e) => {
         const id = e.target.dataset.id;
         await fetch(`/api/tasks/tasks/${id}`, { method: 'DELETE' });
@@ -156,6 +141,5 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('deleteModal').style.display = 'none';
     });
 
-    // Initial load
     loadTasks();
 });
