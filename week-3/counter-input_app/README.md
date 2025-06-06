@@ -1,12 +1,27 @@
-# React + Vite
+##  Counter & Input App##:
+This is a simple interactive React application that combines a counter and a text input field. It demonstrates core React concepts like state management, event handling, conditional rendering, and the useEffect hook.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Demo Video:
+https://www.awesomescreenshot.com/video/40630806?key=a0c46141a275738f8d48e34100434b9f
 
-Currently, two official plugins are available:
+### Different types of Features ###:
+1. ✅ Increment and decrement a counter using buttons
+2. ✅ Display the current counter value
+3. ✅ Input a text and display it
+4. ✅ Use the useEffect hook to update the counter when the component mounts
+5. 🔄 A reset button to clear the counter, input text, and timestamp
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+### Technologies Used ###
+React (Functional Components)
+useState & useEffect hooks
+Basic CSS for styling
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+### File Strututure####:
+/counter-input-app
+│
+├── CounterInputApp.jsx       # Main React component
+├── CounterInputApp.css       # Styles for the component
+└── README.md                 # Project documentation
