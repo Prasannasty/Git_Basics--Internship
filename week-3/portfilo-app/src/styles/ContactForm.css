@@ -1,0 +1,67 @@
+.contact {
+  background: #121212;
+  color: #fff;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 500px;
+  width: 100%;
+  background: #1f1f1f;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.input-field {
+  background: #2c2c2c;
+  border-radius: 8px;
+}
+
+.input-field .MuiOutlinedInput-root {
+  color: #e0e0e0;
+}
+
+.input-field .MuiOutlinedInput-notchedOutline {
+  border-color: #444;
+  transition: border-color 0.3s ease;
+}
+
+.input-field .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #00e0ff;
+}
+
+.input-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #00e0ff;
+  border-width: 2px;
+}
+
+.input-field .MuiInputLabel-root {
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.input-field .MuiInputLabel-root.Mui-focused {
+  color: #00e0ff;
+}
+
+.submit-button {
+  background-color: #00e0ff;
+  color: #121212;
+  font-weight: 600;
+  padding: 12px 0;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 224, 255, 0.4);
+}
+
+.submit-button:hover {
+  background-color: #00bcd4;
+  box-shadow: 0 6px 15px rgba(0, 188, 212, 0.6);
+}

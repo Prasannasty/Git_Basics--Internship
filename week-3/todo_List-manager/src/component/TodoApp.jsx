@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Paper,
-  Switch,
-  Breadcrumbs,
-  Stack,
-} from '@mui/material';
+import {Box,Typography,TextField,Button,Paper,Switch,Breadcrumbs,Stack,} from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import '../styles/TodoApp.css';
@@ -70,9 +61,10 @@ const [viewMode, setViewMode] = useState('incomplete');
         <Paper
           key={todo.id}
           component="li"
-          elevation={2}
+          elevation={6}
           sx={{
-            p: 1.5,
+            p: 2.5,
+            borderRadius: 20,
             mb: 1,
             display: 'flex',
             alignItems: 'center',
