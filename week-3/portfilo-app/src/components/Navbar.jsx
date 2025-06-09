@@ -30,7 +30,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
       <Toolbar disableGutters sx={{ maxWidth: 1200, width: '100%', mx: 'auto', display: 'flex', alignItems: 'center', minHeight: 80, py: { xs: 2, sm: 3 } }}>
         <Typography variant="h4" component="button" onClick={() => handleScrollTo('#hero')}
           sx={{ fontWeight: 700, textDecoration: 'none', color: 'inherit', letterSpacing: '0.1em', fontFamily: "'Inter', sans-serif", background: 'none', border: 'none', cursor: 'pointer', '&:hover': { color: '#0ea5e9' } }}>
-          MyPortfolio
+          Portfolio
         </Typography>
 
         <Box sx={{ flexGrow: 1 }} />

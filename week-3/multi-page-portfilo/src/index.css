@@ -1,0 +1,18 @@
+nav {
+  display: flex;
+  gap: 1rem;
+  background: #333;
+  padding: 1rem;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.breadcrumbs {
+  padding: 0.5rem;
+  background: #eee;
+}

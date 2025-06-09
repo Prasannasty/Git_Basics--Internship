@@ -33,7 +33,7 @@ const ContactForm = () => {
   return (
     <Box id="contact" className="contact">
       <Typography variant="h4" gutterBottom sx={{ mb: 3, fontWeight: 'bold' }}>
-        Contact Me
+        Contact me
       </Typography>
       <Box component="form" className="contact-form" noValidate autoComplete="off" onSubmit={handleSubmit}>
         <TextField  label="Your Name"  name="name"  value={formData.name}  onChange={handleChange}  fullWidth  variant="outlined"  required  autoComplete="name"  className="input-field"

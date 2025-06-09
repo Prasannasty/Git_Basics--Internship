@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Box, Typography, Avatar, Breadcrumbs, Link, useMediaQuery, useTheme,} from '@mui/material';
+import { Box, Typography, Avatar, Breadcrumbs, Link, useMediaQuery, useTheme } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import '../styles/About.css';
+import prasannaImage from '../assets/Prasanna shetty.jpg';
 
 const About = () => {
   const theme = useTheme();
@@ -44,39 +45,19 @@ const About = () => {
     <Box
       id="about"
       className="about-section fade-in-up"
-      sx={{
-        minHeight: '100vh',
-        px: 4,
-        py: 10,
-        display: 'flex',
-        flexDirection: isMobile ? 'column' : 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: theme.palette.mode === 'dark'
-          ? 'linear-gradient(to right, #0f2027, #203a43, #2c5364)'
-          : 'linear-gradient(to right, #e0eafc, #cfdef3)',
-        color: theme.palette.text.primary,
+      sx={{ minHeight: '100vh', px: 4,    py: 10,    display: 'flex',    flexDirection: isMobile ? 'column' : 'row',    alignItems: 'center',    justifyContent: 'center',    backgroundColor: theme.palette.mode === 'dark' ? '#1e1e2f' : '#f0f0f0',  
       }}
     >
       <Box
         className="avatar-container"
-        sx={{
-          flex: 1,
-          display: 'flex',
-          justifyContent: 'center',
-          mb: isMobile ? 4 : 0,
+        sx={{  flex: 1, display: 'flex', justifyContent: 'center', mb: isMobile ? 4 : 0,
         }}
       >
         <Avatar
-          src="/profile.jpg"
+          src={prasannaImage}
           alt="Prasanna"
-          sx={{
-            width: 200,
-            height: 200,
-            border: '4px solid white',
-            boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
-            transition: 'transform 0.4s ease',
-            '&:hover': {
+          sx={{  width: 200, height: 200, border: '4px solid white', boxShadow: '0 8px 20px rgba(0,0,0,0.2)',transition: 'transform 0.4s ease',
+       '&:hover': {
               transform: 'scale(1.05)',
             },
           }}
@@ -85,14 +66,11 @@ const About = () => {
 
       <Box
         sx={{
-          flex: 2,
-          maxWidth: 600,
-          ml: isMobile ? 0 : 6,
-          textAlign: isMobile ? 'center' : 'left',
+          flex: 2,  maxWidth: 600,   ml: isMobile ? 0 : 6,   textAlign: isMobile ? 'center' : 'left',
         }}
       >
         <Typography variant="h3" className="about-heading" gutterBottom>
-          👋 Hello, I'm <span className="highlight">Prasanna</span>
+            <span className="highlight">Prasanna Shetty</span>
         </Typography>
 
         <Breadcrumbs

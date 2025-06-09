@@ -22,7 +22,7 @@ const Skills = () => {
 
   return (
     <Box sx={{ maxWidth: 900, mx: 'auto', p: 4, bgcolor: '#f5f7fa', borderRadius: 3 }}>
-      <Typography variant="h3" align="center" gutterBottom>My Skills</Typography>
+      <Typography variant="h3" align="center" gutterBottom>My skills</Typography>
       {skills.map(({ name, level, color, icon, description }) => (
         <Box key={name} sx={{ mb: 4 }}>
           <Tooltip title={description} arrow>

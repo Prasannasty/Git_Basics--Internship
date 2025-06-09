@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Typography, Button, Divider, useTheme } from '@mui/material';
 import '../styles/Hero.css';
-import codingImage from '../assets/photo.svg';
 
 const Hero = () => {
   const theme = useTheme();
@@ -26,25 +25,46 @@ const Hero = () => {
           Frontend Developer passionate about creating <br /> elegant and intuitive user interfaces.
         </Typography>
 
-        <Divider className="hero-divider" />
 
-   
         <Button
           variant="contained"
           className="hero-button"
           size="large"
           href="#contact"
+          sx={{ mr: 2 }}
         >
           Get in Touch
         </Button>
+
+        <Button
+  variant="outlined"
+  className="hero-button"
+  size="large"
+  component="a"
+  href="/resume.pdf"
+  download="Prasanna_Resume.pdf"
+  sx={{
+    color: theme.palette.text.primary,
+    borderColor: theme.palette.text.primary,
+    '&:hover': {
+      backgroundColor: theme.palette.primary.main,
+      color: '#fff',
+      borderColor: theme.palette.primary.main,
+    },
+  }}
+>
+  Download Resume
+</Button>
+
       </Box>
-<Box className="hero-right">
-  <img
-    src="https://cdn1.iconfinder.com/data/icons/data-science-1-1/512/20-512.png"
-    alt="Coding illustration"
-    className="hero-image"
-  />
-</Box>
+
+      <Box className="hero-right">
+        <img
+          src="https://cdn1.iconfinder.com/data/icons/data-science-1-1/512/20-512.png"
+          alt="Coding illustration"
+          className="hero-image"
+        />
+      </Box>
     </Box>
   );
 };
