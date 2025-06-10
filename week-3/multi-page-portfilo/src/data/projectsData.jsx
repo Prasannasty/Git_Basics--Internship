@@ -1,43 +1,57 @@
 const projects = [
   {
-    id: "virtual-wardrobe",
-    title: "Virtual Wardrobe",
-    description:
-      "A smart way to manage your outfits and plan your daily look using your digital closet. Easily track and organize what you wear.",
+    id: "shopping-cart",
+    title: "Shopping Cart App",
+    description: "An eCommerce cart built with Node.js and Express.",
     github: "https://github.com/navadhiti-2025?tab=repositories",
-    skills: [
-      { name: "React", progress: 80 },
-      { name: "Spring.boot", progress: 70 },
-      { name: "MySQL", progress: 60 },
-      { name: "AWS", progress: 90 },
+    image: "https://tse3.mm.bing.net/th?id=OIP.18DK1en2PnGYaJRp0ZPPuwHaEM&pid=Api&P=0&h=180",
+    features: [
+      "Add/edit/delete products",
+      "JSON file data",
+      "Clean UI",
+      "Popup confirmations",
     ],
   },
   {
-    id: "vita-connect",
-    title: "Vita Connect",
-    description:
-      "A social media app to connect, share, and interact with your network. Built for seamless user interaction and vibrant community building.",
+    id: "task-manager",
+    title: "Task Manager",
+    description: "Task manager with Firebase and real-time sync.",
     github: "https://github.com/navadhiti-2025?tab=repositories",
-    skills: [
-      { name: "OOPs", progress: 90 },
-      { name: "JAVA", progress: 70 },
-      { name: "MySQL", progress: 60 },
-    
+    image: "https://tse4.mm.bing.net/th?id=OIP.H2FYa7o-2wYg7SWKubLCwgHaEC&pid=Api&P=0&h=180",
+    features: [
+      "Firebase backend",
+      "Live sync",
+      "Authentication",
+      "Responsive layout",
     ],
   },
   {
-    id: "newsify",
-    title: "Newsify",
-    description:
-      "Your personalized news aggregator. Stay informed with real-time headlines, tailored categories, and an elegant reading experience.",
+    id: "portfolio",
+    title: "Portfolio Website",
+    description: "Personal portfolio with projects and contact form.",
     github: "https://github.com/navadhiti-2025?tab=repositories",
-    skills: [
-      { name: "React", progress: 80 },
-      { name: "API", progress: 70 },
-      { name: "MySQL", progress: 60 },
-      { name: "AWS", progress: 90 },
+    image: "https://tse3.mm.bing.net/th?id=OIP.uuyJQvxQ9iyowKgM7VoY5wHaDg&pid=Api&P=0&h=180",
+    features: [
+      "React + MUI",
+      "Dark/light toggle",
+      "Animations",
+      "Contact form",
     ],
   },
+  {
+    id: "weather-app",
+    title: "Weather App",
+    description: "Weather forecast app using OpenWeather API.",
+    github: "https://github.com/navadhiti-2025?tab=repositories",
+    image: "https://tse4.mm.bing.net/th?id=OIP.C6cefbqQGSfxsZ9S7VireQHaEA&pid=Api&P=0&h=180",
+    features: [
+      "Live weather data",
+      "Search by city",
+      "Stylish UI",
+      "Error handling",
+    ],
+  },
+ 
 ];
 
 export default projects;

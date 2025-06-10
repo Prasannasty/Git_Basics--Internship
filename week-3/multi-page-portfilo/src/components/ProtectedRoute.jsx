@@ -1,13 +1,19 @@
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import React from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext"; // Adjust import to your auth context
 
 const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
+  const { isAuthenticated } = useAuth(); // Your auth state
   const location = useLocation();
-console.log("Auth:", sessionStorage.getItem('isAuthenticated'));
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace state={{ from: location }} />;
+    // Redirect to login and pass current path in redirect query
+    return (
+      <Navigate
+        to={`/login?redirect=${encodeURIComponent(location.pathname)}`}
+        replace
+      />
+    );
   }
 
   return children;
