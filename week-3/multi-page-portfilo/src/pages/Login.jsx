@@ -1,31 +1,53 @@
-import React, { useEffect } from "react";
-import { Button, Container, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Box, Button, TextField, Typography } from '@mui/material';
 
 const Login = () => {
-  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-    useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (!user) {
-      navigate("/login"); 
-    }
-  }, [navigate]);
-  
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+    const params = new URLSearchParams(location.search);
+  const redirectTo = params.get("redirect") || "/projects";
+ 
   const handleLogin = () => {
-    localStorage.setItem("user", JSON.stringify({ name: "Prasanna" }));
-    navigate("/projects");
+    if (username.trim() && password.trim()) {
+      sessionStorage.setItem('isAuthenticated', 'true');
+      sessionStorage.setItem('username', username);
+      navigate(`/${redirectTo}`, { replace: true });
+    } else {
+      alert('Please enter both username and password.');
+    }
   };
 
   return (
-    <Container sx={{ mt: 10, textAlign: "center" }}>
-      <Typography variant="h4" gutterBottom>
-        Login Page
+    <Box sx={{ maxWidth: 400, mx: 'auto', mt: 10, p: 4 }}>
+      <Typography variant="h4" gutterBottom align="center">
+        Login
       </Typography>
-      <Button variant="contained" onClick={handleLogin}>
-        Login Now
+      <TextField
+        fullWidth
+        label="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        sx={{ mb: 2 }}
+      />
+      <TextField
+        fullWidth
+        label="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        sx={{ mb: 2 }}
+      />
+      <Button variant="contained" fullWidth onClick={handleLogin}>
+        Login
       </Button>
-    </Container>
+    </Box>
+    
   );
 };
 

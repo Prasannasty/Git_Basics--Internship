@@ -39,7 +39,6 @@ const ProjectDetail = () => {
 
   return (
     <Container maxWidth="md" sx={{ mt: 8 }}>
-      {/* Breadcrumbs with white color */}
       <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 3, color: "white" }}>
         <Link
           component={RouterLink}
@@ -65,7 +64,6 @@ const ProjectDetail = () => {
         )}
       </Breadcrumbs>
 
-      {/* Project Overview Card */}
       <Card variant="outlined" sx={{ mb: 4, p: 2, bgcolor: "#f5f5f5" }}>
         <CardContent>
           <Typography variant="h5" gutterBottom>
@@ -85,7 +83,6 @@ const ProjectDetail = () => {
         </CardContent>
       </Card>
 
-      {/* Skills section (toggle visibility) */}
       {showSkills && skills.length > 0 && (
         <Box sx={{ mb: 4 }}>
           <Typography variant="h6" gutterBottom>
