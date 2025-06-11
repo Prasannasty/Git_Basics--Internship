@@ -12,24 +12,22 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Projects from './pages/Projects';
 import ProtectedRoute from './components/ProtectedRoute';
-import RouteResetter from './components/RouteResetter'; // ✅ import the resetter
-import { AuthProvider } from './context/AuthContext'; // ✅ wrap app with context
+import RouteResetter from './components/RouteResetter'; 
+import { AuthProvider } from './context/AuthContext'; 
 
 const App = () => {
   return (
     <AuthProvider>
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Navbar />
-        <RouteResetter /> {/* ✅ Automatically resets auth on route changes */}
+        <RouteResetter /> 
         <Box sx={{ flexGrow: 1, p: 2 }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
 
-            {/* ❌ /projects is public */}
             <Route path="/projects" element={<Projects />} />
 
-            {/* ✅ /projects/:id is protected */}
             <Route
               path="/projects/:projectId"
               element={

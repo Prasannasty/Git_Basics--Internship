@@ -9,7 +9,6 @@ const RouteResetter = () => {
   useEffect(() => {
     const isProjectDetail = matchPath("/projects/:projectId", location.pathname);
 
-    // If user is authenticated but not on /projects/:id → logout
     if (isAuthenticated && !isProjectDetail) {
       logout();
     }

@@ -1,13 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-// Create the context
 const AuthContext = createContext();
 
-// Provider component
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Optionally, check localStorage or other persistence here
   useEffect(() => {
     const storedAuth = localStorage.getItem("isAuthenticated");
     if (storedAuth === "true") {
@@ -15,9 +12,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // Simple login function (replace with real auth logic)
   const login = (email, password) => {
-    // Example: Accept any non-empty email/password for demo
     return new Promise((resolve, reject) => {
       if (email && password) {
         setIsAuthenticated(true);
@@ -29,7 +24,6 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  // Simple logout function
   const logout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("isAuthenticated");
@@ -42,7 +36,6 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Custom hook for consuming the context easily
 export const useAuth = () => {
   return useContext(AuthContext);
 };
