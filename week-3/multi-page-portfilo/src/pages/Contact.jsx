@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import {
   Container,
   Collapse,
@@ -8,6 +9,7 @@ import {
   Typography,
   Box,
   Paper,
+  CircularProgress,
 } from "@mui/material";
 
 const Contact = () => {
@@ -19,6 +21,7 @@ const Contact = () => {
 
   const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Loading state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,21 +51,68 @@ const Contact = () => {
       return;
     }
 
-    setShowSuccess(true);
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setShowSuccess(false), 3000);
+    setIsLoading(true);
+
+    emailjs
+      .send(
+        "service_mdcb5k8",
+        "template_wt93e18",
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          title: "New Contact Request",
+        },
+        "yVoe6s7A0Ffahzbqc"
+      )
+      .then(() => {
+        setShowSuccess(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setShowSuccess(false), 3000);
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        alert("❌ Message sending failed. Please try again.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 14, mb: 10 }}>
+    <Container maxWidth="sm" sx={{ mt: 14, mb: 10, position: "relative" }}>
+      {/* Loading Overlay */}
+      {isLoading && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            bgcolor: "rgba(255,255,255,0.7)",
+            backdropFilter: "blur(4px)",
+            zIndex: 1300,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <CircularProgress size={80} thickness={5} />
+        </Box>
+      )}
+
       <Paper
         elevation={6}
         sx={{
           p: 6,
           borderRadius: 3,
-          backgroundColor: "#f9fafb", // Soft light background color behind form
-          boxShadow:
-            "0 4px 20px rgba(0, 0, 0, 0.12)",
+          backgroundColor: "#f9fafb",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.12)",
+          filter: isLoading ? "blur(3px)" : "none",
+          pointerEvents: isLoading ? "none" : "auto",
+          userSelect: isLoading ? "none" : "auto",
+          transition: "filter 0.3s ease",
         }}
       >
         <Typography
@@ -77,7 +127,7 @@ const Contact = () => {
             fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
           }}
         >
-          Contact me
+          Contact Me
         </Typography>
 
         <Typography
@@ -177,6 +227,7 @@ const Contact = () => {
             size="large"
             fullWidth
             type="submit"
+            disabled={isLoading} // disable button during loading
             sx={{
               mt: 1,
               borderRadius: 3,
@@ -184,12 +235,10 @@ const Contact = () => {
               letterSpacing: 1,
               paddingY: 1.5,
               textTransform: "uppercase",
-              boxShadow:
-                "0 6px 12px rgba(25, 118, 210, 0.3)",
+              boxShadow: "0 6px 12px rgba(25, 118, 210, 0.3)",
               transition: "all 0.3s ease",
               "&:hover": {
-                boxShadow:
-                  "0 8px 20px rgba(25, 118, 210, 0.5)",
+                boxShadow: "0 8px 20px rgba(25, 118, 210, 0.5)",
                 transform: "translateY(-3px)",
               },
             }}
