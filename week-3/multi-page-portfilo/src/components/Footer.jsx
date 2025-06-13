@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Typography, IconButton, Link, Stack } from "@mui/material";
+import { Box, Container, Typography, IconButton, Link } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -27,10 +27,10 @@ const Footer = () => {
           alignItems: "center",
           justifyContent: "space-between",
           flexWrap: "wrap",
+          gap: 2,
         }}
       >
-        {/* Centered text using full width and alignment */}
-        <Box sx={{ flex: 1, textAlign: "center" }}>
+        <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
           <Typography variant="body2">
             &copy; {new Date().getFullYear()} Prasanna Shetty. All rights reserved.
           </Typography>
@@ -39,8 +39,14 @@ const Footer = () => {
           </Typography>
         </Box>
 
-        {/* Social Icons aligned to the right */}
-        <Box sx={{ display: "flex", gap: 1 }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 1,
+            justifyContent: { xs: "center", md: "flex-end" },
+            flex: 1,
+          }}
+        >
           <IconButton
             component={Link}
             href="https://github.com/navadhiti-2025?tab=repositories"

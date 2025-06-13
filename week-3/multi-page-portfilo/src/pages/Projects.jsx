@@ -45,13 +45,13 @@ const Projects = () => {
               item
               xs={12}
               sm={6}
-              md={4} // 3 cards per row on md+
+              md={4}
               key={id}
               sx={{ display: "flex", flexDirection: "column" }}
             >
               <Card
                 sx={{
-                  height: "100%", // full height card to fill grid item
+                  height: "100%",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
