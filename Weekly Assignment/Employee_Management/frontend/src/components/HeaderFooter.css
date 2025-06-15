@@ -1,0 +1,21 @@
+.header {
+  background-color: #d6e4f7; /* soft light blue */
+  color: #333;
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  color: #555;
+  text-align: center;
+  padding: 12px 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+}

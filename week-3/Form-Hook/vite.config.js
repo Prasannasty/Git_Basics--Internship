@@ -10,7 +10,6 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
-      // If you have other API routes, you can add more here
     },
   },
 });

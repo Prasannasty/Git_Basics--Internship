@@ -1,0 +1,95 @@
+/* Container Styling */
+.table-container {
+  padding: 30px;
+  max-width: 900px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* MUI Table Head Styling */
+.MuiTableCell-head {
+  background-color: #007bff !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+/* Hover row effect */
+.MuiTableRow-root:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+/* Pagination styling */
+.MuiTablePagination-root {
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+}
+
+/* Darker Hover Effects */
+
+/* Edit button default */
+.edit-button {
+  border-color: #004085;
+  color: #004085;
+}
+
+/* Delete button default */
+.delete-button {
+  border-color: #7f101c;
+  color: #7f101c;
+}
+
+/* Edit button hover - Dark Blue */
+.MuiButton-outlinedPrimary:hover,
+.edit-button:hover {
+  background-color: #0056b3 !important;
+  border-color: #004085 !important;
+  color: #ffffff !important;
+  transition: all 0.2s ease;
+}
+
+/* Delete button hover - Dark Red */
+.MuiButton-outlinedError:hover,
+.delete-button:hover {
+  background-color: #a71d2a !important;
+  border-color: #7f101c !important;
+  color: #ffffff !important;
+  transition: all 0.2s ease;
+}
+
+/* Back to Form button (contained primary) */
+.MuiButton-containedPrimary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.MuiButton-containedPrimary:hover {
+  background-color: #0056b3;
+}
