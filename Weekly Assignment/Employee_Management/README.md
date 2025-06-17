@@ -4,7 +4,9 @@ A simple full-stack web application to manage employees. You can add, view, edit
 
 
 ## 📽 Demo Video
-[![Watch the demo]](demo/Employee Management.mp4)
+
+🎬 [Click here to watch the demo](demo/Employee%20Management.mp4)
+
 
 ##  Tech Stack
 
