@@ -1,21 +1,26 @@
 .header {
-  background-color: #d6e4f7; /* soft light blue */
-  color: #333;
-  padding: 15px 20px;
+  background: linear-gradient(90deg, #6d5252, #77abda, #c88f8f);
+  color: #222;
+  padding: 10px 16px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #c9def5;
 }
 
 .footer {
-  background-color: #f8f9fa;
-  color: #555;
+    background: linear-gradient(90deg, #e2d1d1, #c6d2de, #ddbcbc);
+  color: #666;
   text-align: center;
-  padding: 12px 20px;
+  padding: 8px 16px;
+  font-size: 13px;
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
-  font-size: 14px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #776565;
+  box-shadow: 0 -1px 4px rgba(64, 61, 61, 0.05);
+  z-index: 100;
 }
+

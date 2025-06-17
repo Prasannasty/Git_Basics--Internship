@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import Employee, { IEmployee } from './Employee';
 
-// GET /employees
 export const getEmployees = async (_: Request, res: Response) => {
   try {
     const employees = await Employee.find();
@@ -11,7 +10,6 @@ export const getEmployees = async (_: Request, res: Response) => {
   }
 };
 
-// POST /employees
 export const addEmployee = async (req: Request, res: Response) => {
   try {
     const { name, email, role } = req.body;
@@ -30,7 +28,6 @@ export const addEmployee = async (req: Request, res: Response) => {
   }
 };
 
-// PUT /employees/:id
 export const updateEmployee = async (req: Request, res: Response) => {
   try {
     const { name, email, role } = req.body;
@@ -51,7 +48,6 @@ export const updateEmployee = async (req: Request, res: Response) => {
   }
 };
 
-// DELETE /employees/:id
 export const deleteEmployee = async (req: Request, res: Response) => {
   try {
     const employee = await Employee.findByIdAndDelete(req.params.id);

@@ -26,7 +26,7 @@ const initialForm: Omit<Employee, '_id'> = {
 
 const EmployeeForm: React.FC<Props> = ({ onSubmit, editingEmployee, onCancelEdit, error }) => {
   const [form, setForm] = useState(initialForm);
-  const [originalForm, setOriginalForm] = useState(initialForm); // for change tracking
+  const [originalForm, setOriginalForm] = useState(initialForm); 
   const [formError, setFormError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState(false);
   const [hasChanged, setHasChanged] = useState(false);
@@ -54,7 +54,6 @@ const EmployeeForm: React.FC<Props> = ({ onSubmit, editingEmployee, onCancelEdit
     const valid = form.name.trim() !== '' && form.role.trim() !== '' && emailRegex.test(form.email);
     setIsValid(valid);
 
-    // Check for any changes
     const changed =
       form.name !== originalForm.name ||
       form.email !== originalForm.email ||
@@ -93,13 +92,11 @@ const EmployeeForm: React.FC<Props> = ({ onSubmit, editingEmployee, onCancelEdit
   return (
     <div className="container">
       <ToastContainer />
-
       {loading && (
         <div className="overlay">
           <div className="spinner"></div>
         </div>
       )}
-
       <div className={`form-content ${loading ? 'blurred' : ''}`}>
         <div className="form-header">
           <h2 className="form-title">{editingEmployee ? 'Edit Employee' : 'Add Employee'}</h2>
@@ -107,47 +104,43 @@ const EmployeeForm: React.FC<Props> = ({ onSubmit, editingEmployee, onCancelEdit
             View All Employees
           </button>
         </div>
-
         <form className="employee-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
             <input
               id="name"
               name="name"
               type="text"
               value={form.name}
               onChange={handleChange}
-              placeholder="Enter full name"
               required
+              placeholder=" "
             />
+            <label htmlFor="name">Full Name</label>
           </div>
-
           <div className="form-group">
-            <label htmlFor="email">Email</label>
             <input
               id="email"
               name="email"
               type="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="Enter email"
               required
+              placeholder=" "
             />
+            <label htmlFor="email">Email Address</label>
           </div>
-
           <div className="form-group">
-            <label htmlFor="role">Role</label>
             <input
               id="role"
               name="role"
               type="text"
               value={form.role}
               onChange={handleChange}
-              placeholder="Enter role"
               required
+              placeholder=" "
             />
+            <label htmlFor="role">Job Role</label>
           </div>
-
           <button
             type="submit"
             className="btn submit-btn"
@@ -155,7 +148,6 @@ const EmployeeForm: React.FC<Props> = ({ onSubmit, editingEmployee, onCancelEdit
           >
             {loading ? 'Submitting...' : editingEmployee ? 'Update' : 'Add'}
           </button>
-
           {formError && <div className="error-msg">{formError}</div>}
           {error && <div className="error-msg">{error}</div>}
         </form>

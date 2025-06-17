@@ -1,4 +1,3 @@
-/* Container Styling */
 .table-container {
   padding: 30px;
   max-width: 900px;
@@ -8,7 +7,6 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* Table Styling */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -33,40 +31,33 @@ tr:hover {
   background-color: #f1f1f1;
 }
 
-/* MUI Table Head Styling */
 .MuiTableCell-head {
-  background-color: #007bff !important;
+  background-color: #585a5c !important;
   color: white !important;
   font-weight: bold;
 }
 
-/* Hover row effect */
 .MuiTableRow-root:hover {
   background-color: #f1f1f1;
   transition: background-color 0.3s ease;
 }
 
-/* Pagination styling */
 .MuiTablePagination-root {
   background-color: #f9f9f9;
   border-top: 1px solid #eee;
 }
 
-/* Darker Hover Effects */
 
-/* Edit button default */
 .edit-button {
   border-color: #004085;
   color: #004085;
 }
 
-/* Delete button default */
 .delete-button {
   border-color: #7f101c;
   color: #7f101c;
 }
 
-/* Edit button hover - Dark Blue */
 .MuiButton-outlinedPrimary:hover,
 .edit-button:hover {
   background-color: #0056b3 !important;
@@ -75,7 +66,6 @@ tr:hover {
   transition: all 0.2s ease;
 }
 
-/* Delete button hover - Dark Red */
 .MuiButton-outlinedError:hover,
 .delete-button:hover {
   background-color: #a71d2a !important;
@@ -84,7 +74,6 @@ tr:hover {
   transition: all 0.2s ease;
 }
 
-/* Back to Form button (contained primary) */
 .MuiButton-containedPrimary {
   background-color: #007bff;
   color: #fff;

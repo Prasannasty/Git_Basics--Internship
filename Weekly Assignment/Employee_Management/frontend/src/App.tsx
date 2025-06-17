@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import {
-  Employee,
-  fetchEmployees,
-  addEmployee,
-  updateEmployee,
-  deleteEmployee,
-} from './api/employeeApi';
+import { Employee, fetchEmployees,addEmployee,updateEmployee,deleteEmployee,} from './api/employeeApi';
 import EmployeeForm from './components/EmployeeForm';
 import EmployeeTable from './components/EmployeeTable';
 import Header from './components/Header';
