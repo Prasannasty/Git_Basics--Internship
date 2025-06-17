@@ -1,54 +1,59 @@
-# React + TypeScript + Vite
+#  Employee Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple full-stack web application to manage employees. You can add, view, edit, and delete employee records easily.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📽 Demo Video
+[![Watch the demo]](demo/Employee Management.mp4)
 
-## Expanding the ESLint configuration
+##  Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend:** React (with TypeScript), React Router DOM, React Toastify, CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB (using Mongoose)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Folder Structure
+Employee_Management/
+|--- frontend/
+|    |--- public/
+|    |--- src/
+|    |    |--- components/
+|    |       |--- EmployeeForm.tsx 
+             |--- EmployeeTable.tsx
+     |--- App.tsx
+     |--- index.tsx
+ |--- backend/
+ |    |--- models/
+ |    |--- routes/
+ |    |--- server.ts
+ |--- package.json
+ |--- README.md
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+ ### .env file
+ PORT=5000
+MONGO_URI=mongodb://localhost:27017/employee_db
+
+###  Running the App
+**Backend**:
+cd backend
+npm run dev
+
+**Frontend**:
+cd frontend
+npm install
+npm start
+
+**URL**:
+Frontend: http://localhost:3000
+Backend: http://localhost:5000
+
+## API ENDPOINTS:
+| Method | Endpoint         | Description         |
+| ------ | ---------------- | ------------------- |
+| GET    | `/employees`     | Fetch all employees |
+| POST   | `/employees`     | Add new employee    |
+| PUT    | `/employees/:id` | Update an employee  |
+| DELETE | `/employees/:id` | Delete an employee  |
